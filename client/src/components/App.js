@@ -1,17 +1,17 @@
 import React, { Fragment } from "react";
+import { Route, Switch, BrowserRouter } from "react-router-dom";
 
 import "./App.scss";
 import Navbar from "./layout/Navbar";
 import Home from "./pages/Home";
 
-function App() {
+const App = () => {
   return (
-    <Fragment>
+    <BrowserRouter>
       <Navbar />
-
       <Home />
-    </Fragment>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;

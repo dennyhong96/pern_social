@@ -1,53 +1,36 @@
-import React, { Fragment, useState } from "react";
+import React from "react";
+import { Navbar, Nav, Container } from "react-bootstrap";
 
-import "./Navbar.scss";
+import RouterNavLink from "./RouterNavLink";
 
-const Navbar = () => {
-  const [show, setShow] = useState(false);
-
-  const handleShow = () => {
-    setShow(!show);
-  };
-
+const _Navbar = () => {
   return (
-    <nav className="navbar">
-      <div className="container navbar-container">
-        <div className="navbar-button" onClick={handleShow}>
-          <i className="fas fa-bars fa-2x"></i>
-        </div>
-        <a className="navbar-brand" href="">
-          <i class="fas fa-fire"></i> <span>sociio</span>
-        </a>
-        <ul className={`nav-list ${show && "show"}`}>
-          <li className="nav-item">
-            <a href="" className="nav-link">
+    <Navbar bg="primary" variant="dark" expand="lg">
+      <Container>
+        <Navbar.Brand href="#home">
+          <i className="fas fa-fire fa-2x"></i>
+          <span className="brand-name">sociio</span>
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="ml-auto">
+            <RouterNavLink exact to="/">
               Home
-            </a>
-          </li>
-          <li className="nav-item">
-            <a href="" className="nav-link">
+            </RouterNavLink>
+            <RouterNavLink exact to="/">
               Profile
-            </a>
-          </li>
-          <li className="nav-item">
-            <a href="" className="nav-link">
-              Groups
-            </a>
-          </li>
-          <li className="nav-item">
-            <a href="" className="nav-link">
+            </RouterNavLink>
+            <RouterNavLink exact to="/">
               Login
-            </a>
-          </li>
-          <li className="nav-item">
-            <a href="" className="nav-link">
+            </RouterNavLink>
+            <RouterNavLink exact to="/">
               Logout
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+            </RouterNavLink>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
   );
 };
 
-export default Navbar;
+export default _Navbar;
