@@ -23,6 +23,12 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+// HELPER
+.pt-6 {
+  padding-top: 5rem;
+}
+
+// NAVABR
 .navbar {
   padding: 0 auto;
 
@@ -47,6 +53,51 @@ body {
     &:hover {
       background-color: #a4a3e3;
       border-radius: 3px;
+    }
+  }
+}
+
+// HOME SECTION
+.home {
+  min-height: 100vh;
+}
+
+// POST CARD
+.card {
+  box-shadow: 0 2px 5px rgba(#151527, 0.1);
+
+  .card-header {
+    padding: 0.25rem 1.25rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #ff8550;
+
+    .avatar {
+      width: 50px;
+      border-radius: 50%;
+    }
+
+    .owner {
+      margin-left: 0.5rem;
+      p {
+        margin: 0;
+        &:last-child {
+          color: #84817a;
+          font-size: 0.8rem;
+        }
+      }
+    }
+  }
+
+  .card-body {
+    padding: 0.75rem;
+
+    .card-img {
+      width: 100%;
+    }
+
+    .card-text {
+      margin: 0 0 0 0.75rem;
     }
   }
 }

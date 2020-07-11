@@ -5,7 +5,13 @@ import RouterNavLink from "./RouterNavLink";
 
 const _Navbar = () => {
   return (
-    <Navbar bg="primary" variant="dark" expand="lg">
+    <Navbar
+      bg="primary"
+      variant="dark"
+      expand="lg"
+      collapseOnSelect={true}
+      fixed="top"
+    >
       <Container>
         <Navbar.Brand href="#home">
           <i className="fas fa-fire fa-2x"></i>
