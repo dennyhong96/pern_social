@@ -59,18 +59,24 @@ body {
 
 // HOME SECTION
 .home {
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
+
+  .card-container {
+    max-height: 90vh;
+    overflow: scroll;
+  }
 }
 
 // POST CARD
-.card {
+.card.post-card {
   box-shadow: 0 2px 5px rgba(#151527, 0.1);
 
   .card-header {
     padding: 0.25rem 1.25rem;
     display: flex;
     align-items: center;
-    border-bottom: 2px solid #ff8550;
+    border-bottom: 2px solid #ffa983;
 
     .avatar {
       width: 50px;
@@ -95,9 +101,42 @@ body {
     .card-img {
       width: 100%;
     }
+  }
 
-    .card-text {
-      margin: 0 0 0 0.75rem;
+  .actions {
+    .delete {
+      margin-left: auto;
+      padding: 0 0.4rem;
+    }
+  }
+}
+
+// PERSONAL INFO CARD
+.card.personal-info {
+  box-shadow: 0 2px 5px rgba(#151527, 0.1);
+  border-bottom: 2px solid #ff8550;
+
+  .card-body {
+    .avatar {
+      width: 100px;
+      display: block;
+      margin: auto;
+      border-radius: 50%;
+      border: 2px solid #ff8550;
+    }
+
+    .friends-list {
+      max-height: 30rem;
+      overflow-y: scroll;
+
+      .list-group-item {
+        padding: 0.25rem 1rem;
+      }
+
+      .friend-avartar {
+        width: 35px;
+        border-radius: 50%;
+      }
     }
   }
 }
