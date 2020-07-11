@@ -4,6 +4,9 @@ const bcrypt = require("bcryptjs");
 const registerValidator = require("../utils/validators/register");
 const sendJwtResponse = require("../utils/sendJwtResponse");
 
+// @desc    Register a user
+// @route   POST /api/auth/register
+// @access  Public
 exports.register = async (req, res, next) => {
   try {
     // Handle invalid input fields
@@ -19,6 +22,9 @@ exports.register = async (req, res, next) => {
       "INSERT INTO users(handle, email, password) VALUES($1, $2, $3) RETURNING * ;",
       [handle, email, hashedPassword]
     );
+    await pool.query("INSERT INTO profiles(user_id) VALUES($1) ;", [
+      user.rows[0].id,
+    ]);
     sendJwtResponse(user.rows[0], 201, res);
   } catch (error) {
     console.error(error);
@@ -31,6 +37,9 @@ exports.register = async (req, res, next) => {
   }
 };
 
+// @desc    Login a user
+// @route   POST /api/auth/login
+// @access  Public
 exports.login = async (req, res, next) => {
   try {
     const { handle, password } = req.body;
@@ -64,6 +73,24 @@ exports.login = async (req, res, next) => {
     }
 
     sendJwtResponse(user.rows[0], 200, res);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Something went wrong" });
+  }
+};
+
+// @desc    Load logged in user's profile
+// @route   POST /api/auth/loadme
+// @access  Private
+exports.loadMe = async (req, res, next) => {
+  try {
+    const user = await pool.query(
+      `SELECT users.id, handle, photo FROM users
+       INNER JOIN profiles ON users.id = profiles.user_id
+       WHERE users.id = $1 ;`,
+      [req.user.id]
+    );
+    res.status(200).json({ user: user.rows[0] });
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Something went wrong" });
