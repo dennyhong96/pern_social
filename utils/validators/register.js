@@ -21,6 +21,7 @@ module.exports = (body) => {
   } else if (!body.handle.match(/^[a-zA-Z0-9_-]+$/)) {
     errors.handle = "A handle can only contain a-z, A-Z, - and _";
   }
+
   if (!body.email.length) {
     errors.email = "An email is required";
   } else if (!validator.isEmail(body.email)) {
