@@ -10,7 +10,7 @@ app.use(express.json());
 app.use(morgan("dev"));
 
 // Mount Routers
-app.use("/auth", authRouter);
+app.use("/api/auth", authRouter);
 
 const port = process.env.PORT || 5000;
 app.listen(port, console.log(`Server up on port ${port}...`));
