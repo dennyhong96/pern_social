@@ -1,0 +1,20 @@
+@import "../App.scss";
+
+.home {
+  @include set-bg-text($color-light);
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+
+    .posts {
+      background-color: red;
+      grid-column: 2/8;
+    }
+
+    .following {
+      background-color: green;
+      grid-column: 9/-2;
+    }
+  }
+}
